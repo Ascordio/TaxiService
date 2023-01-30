@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiService.UI", "TaxiService.UI\TaxiService.UI.csproj", "{EA7C11C6-5BBE-4EC4-AB37-12059BC9F236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiService.UI", "TaxiService.UI\TaxiService.UI.csproj", "{EA7C11C6-5BBE-4EC4-AB37-12059BC9F236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiService.Core", "TaxiService.Core\TaxiService.Core.csproj", "{4F1B741C-E419-4211-9817-DE2823E07255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiService.Repos", "TaxiService.Repos\TaxiService.Repos.csproj", "{9BBE4D9A-EB92-4485-8FB4-5288D5536EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EA7C11C6-5BBE-4EC4-AB37-12059BC9F236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7C11C6-5BBE-4EC4-AB37-12059BC9F236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7C11C6-5BBE-4EC4-AB37-12059BC9F236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1B741C-E419-4211-9817-DE2823E07255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1B741C-E419-4211-9817-DE2823E07255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1B741C-E419-4211-9817-DE2823E07255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1B741C-E419-4211-9817-DE2823E07255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BBE4D9A-EB92-4485-8FB4-5288D5536EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BBE4D9A-EB92-4485-8FB4-5288D5536EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BBE4D9A-EB92-4485-8FB4-5288D5536EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BBE4D9A-EB92-4485-8FB4-5288D5536EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
