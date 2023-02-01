@@ -9,5 +9,11 @@ namespace TaxiService.Core
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Seed();
+            base.OnModelCreating(builder);
+        }
     }
 }

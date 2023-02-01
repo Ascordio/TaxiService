@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TaxiService.Core.Migrations
 {
-    public partial class Test1 : Migration
+    public partial class Init2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -155,6 +155,39 @@ namespace TaxiService.Core.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "2cac3a34-cc2c-437a-8179-15522da45fe5", "a8b72806-51b7-497a-95bb-7a861883d86d", "Admin", "ADMIN" },
+                    { "4ef3dad5-248c-494e-a5c0-9491b04e3c74", "dda47c15-3fc7-4c26-bcf9-11a4c077f53b", "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7", 0, "6cac27cc-a09f-45b3-8879-c18bf30db1af", "user@taxiseervice.com", true, null, null, false, null, "USER@TAXISEERVICE.COM", "USER@TAXISEERVICE.COM", "AQAAAAEAACcQAAAAEDpGNKYQvnHAq+/5MqNYm72awkibMLVlKQ/wm9hdN4cNyc4bUB9PrB5jQxj8/p7Axg==", null, false, "1dfcb89e-9464-4199-86b8-610595d24ea2", false, "user@taxiseervice.com" },
+                    { "f82b420d-3582-4c77-8ff0-518086171c2a", 0, "e798b11d-d2bc-4019-9600-b15749ea7c9c", "admin@taxiseervice.com", true, null, null, false, null, "ADMIN@TAXISEERVICE.COM", "ADMIN@TAXISEERVICE.COM", "AQAAAAEAACcQAAAAEFoEE2rMryQ2BSAXRu5F8pVrgcE2x7OHq7rO7O2Q3wBkjCJ1LJWVvvgFka58nPHcZQ==", null, false, "c31131df-12d3-4019-946f-a81f719c304e", false, "admin@taxiseervice.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2cac3a34-cc2c-437a-8179-15522da45fe5", "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "4ef3dad5-248c-494e-a5c0-9491b04e3c74", "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2cac3a34-cc2c-437a-8179-15522da45fe5", "f82b420d-3582-4c77-8ff0-518086171c2a" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

@@ -12,8 +12,8 @@ using TaxiService.Core;
 namespace TaxiService.Core.Migrations
 {
     [DbContext(typeof(TaxiServiceDbContext))]
-    [Migration("20230130134636_Test1")]
-    partial class Test1
+    [Migration("20230201200054_Init2")]
+    partial class Init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,22 @@ namespace TaxiService.Core.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2cac3a34-cc2c-437a-8179-15522da45fe5",
+                            ConcurrencyStamp = "a8b72806-51b7-497a-95bb-7a861883d86d",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "4ef3dad5-248c-494e-a5c0-9491b04e3c74",
+                            ConcurrencyStamp = "dda47c15-3fc7-4c26-bcf9-11a4c077f53b",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -138,6 +154,23 @@ namespace TaxiService.Core.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "f82b420d-3582-4c77-8ff0-518086171c2a",
+                            RoleId = "2cac3a34-cc2c-437a-8179-15522da45fe5"
+                        },
+                        new
+                        {
+                            UserId = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
+                            RoleId = "2cac3a34-cc2c-437a-8179-15522da45fe5"
+                        },
+                        new
+                        {
+                            UserId = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
+                            RoleId = "4ef3dad5-248c-494e-a5c0-9491b04e3c74"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -230,6 +263,40 @@ namespace TaxiService.Core.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "f82b420d-3582-4c77-8ff0-518086171c2a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e798b11d-d2bc-4019-9600-b15749ea7c9c",
+                            Email = "admin@taxiseervice.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@TAXISEERVICE.COM",
+                            NormalizedUserName = "ADMIN@TAXISEERVICE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFoEE2rMryQ2BSAXRu5F8pVrgcE2x7OHq7rO7O2Q3wBkjCJ1LJWVvvgFka58nPHcZQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "c31131df-12d3-4019-946f-a81f719c304e",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@taxiseervice.com"
+                        },
+                        new
+                        {
+                            Id = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6cac27cc-a09f-45b3-8879-c18bf30db1af",
+                            Email = "user@taxiseervice.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@TAXISEERVICE.COM",
+                            NormalizedUserName = "USER@TAXISEERVICE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDpGNKYQvnHAq+/5MqNYm72awkibMLVlKQ/wm9hdN4cNyc4bUB9PrB5jQxj8/p7Axg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1dfcb89e-9464-4199-86b8-610595d24ea2",
+                            TwoFactorEnabled = false,
+                            UserName = "user@taxiseervice.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
