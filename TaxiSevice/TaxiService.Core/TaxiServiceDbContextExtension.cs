@@ -15,6 +15,7 @@ namespace TaxiService.Core
         {
             string ADMIN_ROLE_ID = Guid.NewGuid().ToString();
             string USER_ROLE_ID = Guid.NewGuid().ToString();
+            string DRIVER_ROLE_ID = Guid.NewGuid().ToString();
 
             builder.Entity<IdentityRole>().HasData(
                 new IdentityRole
@@ -28,10 +29,17 @@ namespace TaxiService.Core
                     Id = USER_ROLE_ID,
                     Name = "User",
                     NormalizedName = "USER"
+                },
+                new IdentityRole
+                {
+                    Id = DRIVER_ROLE_ID,
+                    Name = "Driver",
+                    NormalizedName = "DRIVER"
                 });
 
             string ADMIN_ID = Guid.NewGuid().ToString();
             string USER_ID = Guid.NewGuid().ToString();
+            string DRIVER_ID= Guid.NewGuid().ToString();
 
             var admin = new User
             {
@@ -50,13 +58,23 @@ namespace TaxiService.Core
                 EmailConfirmed = true,
                 NormalizedEmail = "user@taxiseervice.com".ToUpper(),
                 NormalizedUserName = "user@taxiseervice.com".ToUpper()
-            };   
+            };
+            var driver = new User
+            {
+                Id = DRIVER_ID,
+                UserName = "driver@taxiseervice.com",
+                Email = "driver@taxiseervice.com",
+                EmailConfirmed = true,
+                NormalizedEmail = "driver@taxiseervice.com".ToUpper(),
+                NormalizedUserName = "driver@taxiseervice.com".ToUpper()
+            };
             PasswordHasher<User> hasher = new PasswordHasher<User>();
 
             admin.PasswordHash = hasher.HashPassword(admin, "AdminPass0");
             user.PasswordHash = hasher.HashPassword(user, "UserPass1");
+            driver.PasswordHash = hasher.HashPassword(driver, "DriverPass2");
 
-            builder.Entity<User>().HasData(admin, user);
+            builder.Entity<User>().HasData(admin, user, driver);
 
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
@@ -66,13 +84,23 @@ namespace TaxiService.Core
                 },
                 new IdentityUserRole<string>
                 {
-                    RoleId = ADMIN_ROLE_ID,
-                    UserId = USER_ID,
+                    RoleId = DRIVER_ROLE_ID,
+                    UserId = DRIVER_ID,
                 },
                 new IdentityUserRole<string>
                 {
                     RoleId = USER_ROLE_ID,
                     UserId = USER_ID,
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = ADMIN_ROLE_ID,
+                    UserId = USER_ID,
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = ADMIN_ROLE_ID,
+                    UserId = DRIVER_ID,
                 }
                 );
         }

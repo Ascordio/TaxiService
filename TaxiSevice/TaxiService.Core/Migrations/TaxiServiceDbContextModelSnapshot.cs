@@ -51,17 +51,24 @@ namespace TaxiService.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2cac3a34-cc2c-437a-8179-15522da45fe5",
-                            ConcurrencyStamp = "a8b72806-51b7-497a-95bb-7a861883d86d",
+                            Id = "4e8a6788-52b0-4af6-9991-2a7f89564ba5",
+                            ConcurrencyStamp = "49bb3eaa-c0ad-49be-9273-eb39170a27cf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4ef3dad5-248c-494e-a5c0-9491b04e3c74",
-                            ConcurrencyStamp = "dda47c15-3fc7-4c26-bcf9-11a4c077f53b",
+                            Id = "0a69c6f7-c992-41d5-b36e-7f29544e65fc",
+                            ConcurrencyStamp = "65c4367e-a9c4-4dad-a964-5d59de645012",
                             Name = "User",
                             NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "46bc5482-f4ad-4287-a0e5-7edd0bcc0628",
+                            ConcurrencyStamp = "2e65f450-ed2d-4548-9f52-fad9974aeacc",
+                            Name = "Driver",
+                            NormalizedName = "DRIVER"
                         });
                 });
 
@@ -156,18 +163,28 @@ namespace TaxiService.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f82b420d-3582-4c77-8ff0-518086171c2a",
-                            RoleId = "2cac3a34-cc2c-437a-8179-15522da45fe5"
+                            UserId = "d2ad42f0-ea92-4fad-b57e-1f593b1ecf7c",
+                            RoleId = "4e8a6788-52b0-4af6-9991-2a7f89564ba5"
                         },
                         new
                         {
-                            UserId = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
-                            RoleId = "2cac3a34-cc2c-437a-8179-15522da45fe5"
+                            UserId = "8078e7a8-5392-49f9-8d4a-49dec4f7c33f",
+                            RoleId = "46bc5482-f4ad-4287-a0e5-7edd0bcc0628"
                         },
                         new
                         {
-                            UserId = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
-                            RoleId = "4ef3dad5-248c-494e-a5c0-9491b04e3c74"
+                            UserId = "62b9d0bc-dafa-4ed3-a02b-ca8ca3ef8bd2",
+                            RoleId = "0a69c6f7-c992-41d5-b36e-7f29544e65fc"
+                        },
+                        new
+                        {
+                            UserId = "62b9d0bc-dafa-4ed3-a02b-ca8ca3ef8bd2",
+                            RoleId = "4e8a6788-52b0-4af6-9991-2a7f89564ba5"
+                        },
+                        new
+                        {
+                            UserId = "8078e7a8-5392-49f9-8d4a-49dec4f7c33f",
+                            RoleId = "4e8a6788-52b0-4af6-9991-2a7f89564ba5"
                         });
                 });
 
@@ -190,6 +207,153 @@ namespace TaxiService.Core.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("TaxiService.Core.BodyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CarInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarInfoId");
+
+                    b.ToTable("BodyTypes");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarClass", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CarInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Class")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarInfoId");
+
+                    b.ToTable("CarClasses");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CarInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarInfoId");
+
+                    b.ToTable("CarColors");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("DriverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("CarInfo");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.ClientResponse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CarInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarInfoId");
+
+                    b.ToTable("ClientResponse");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.Mark", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CarMark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ClientResponseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientResponseId");
+
+                    b.ToTable("Marks");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("TaxiService.Core.User", b =>
@@ -265,35 +429,51 @@ namespace TaxiService.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f82b420d-3582-4c77-8ff0-518086171c2a",
+                            Id = "d2ad42f0-ea92-4fad-b57e-1f593b1ecf7c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e798b11d-d2bc-4019-9600-b15749ea7c9c",
+                            ConcurrencyStamp = "618512d4-7015-48f0-9b65-47ee3b6c306f",
                             Email = "admin@taxiseervice.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TAXISEERVICE.COM",
                             NormalizedUserName = "ADMIN@TAXISEERVICE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFoEE2rMryQ2BSAXRu5F8pVrgcE2x7OHq7rO7O2Q3wBkjCJ1LJWVvvgFka58nPHcZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH3ng12/MvZC2E1sqpfM9yNsJSN9pJft+Ricdbqifk4+RmtBNde10ASCSKnlrHjMDw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c31131df-12d3-4019-946f-a81f719c304e",
+                            SecurityStamp = "395467cc-7287-467e-aa3c-00b7f72fac47",
                             TwoFactorEnabled = false,
                             UserName = "admin@taxiseervice.com"
                         },
                         new
                         {
-                            Id = "c56c557c-4ba7-437e-9bdb-3a5ed92c70b7",
+                            Id = "62b9d0bc-dafa-4ed3-a02b-ca8ca3ef8bd2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6cac27cc-a09f-45b3-8879-c18bf30db1af",
+                            ConcurrencyStamp = "23b65def-359a-4838-b380-b31a43626bcd",
                             Email = "user@taxiseervice.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@TAXISEERVICE.COM",
                             NormalizedUserName = "USER@TAXISEERVICE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDpGNKYQvnHAq+/5MqNYm72awkibMLVlKQ/wm9hdN4cNyc4bUB9PrB5jQxj8/p7Axg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ6OD1mU4yZ+R40woevIDvJn9A6+92QO69RM/wWyHxNflgD3FpoG1+weWCJYTWNQdw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1dfcb89e-9464-4199-86b8-610595d24ea2",
+                            SecurityStamp = "70077c17-fd2a-43da-90de-cebec5de2fd1",
                             TwoFactorEnabled = false,
                             UserName = "user@taxiseervice.com"
+                        },
+                        new
+                        {
+                            Id = "8078e7a8-5392-49f9-8d4a-49dec4f7c33f",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "44d1f30a-67f6-4e88-817f-cfda5b2005c4",
+                            Email = "driver@taxiseervice.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DRIVER@TAXISEERVICE.COM",
+                            NormalizedUserName = "DRIVER@TAXISEERVICE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJxugTdzWNvH0BXDlH26DiCzFKUSS7wzyyTFUBOyl2AIXrSLRoJN921eCM86Widw5g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8143e4c0-8ccd-4281-8196-9bd58cc6c510",
+                            TwoFactorEnabled = false,
+                            UserName = "driver@taxiseervice.com"
                         });
                 });
 
@@ -346,6 +526,80 @@ namespace TaxiService.Core.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TaxiService.Core.BodyType", b =>
+                {
+                    b.HasOne("TaxiService.Core.CarInfo", null)
+                        .WithMany("BodyTypeId")
+                        .HasForeignKey("CarInfoId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarClass", b =>
+                {
+                    b.HasOne("TaxiService.Core.CarInfo", null)
+                        .WithMany("CarClassId")
+                        .HasForeignKey("CarInfoId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarColor", b =>
+                {
+                    b.HasOne("TaxiService.Core.CarInfo", null)
+                        .WithMany("ColorId")
+                        .HasForeignKey("CarInfoId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarInfo", b =>
+                {
+                    b.HasOne("TaxiService.Core.User", "Driver")
+                        .WithMany("CarInfos")
+                        .HasForeignKey("DriverId");
+
+                    b.HasOne("TaxiService.Core.Order", null)
+                        .WithMany("CarsId")
+                        .HasForeignKey("OrderId");
+
+                    b.Navigation("Driver");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.ClientResponse", b =>
+                {
+                    b.HasOne("TaxiService.Core.CarInfo", null)
+                        .WithMany("ClientResponseId")
+                        .HasForeignKey("CarInfoId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.Mark", b =>
+                {
+                    b.HasOne("TaxiService.Core.ClientResponse", null)
+                        .WithMany("MarkId")
+                        .HasForeignKey("ClientResponseId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.CarInfo", b =>
+                {
+                    b.Navigation("BodyTypeId");
+
+                    b.Navigation("CarClassId");
+
+                    b.Navigation("ClientResponseId");
+
+                    b.Navigation("ColorId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.ClientResponse", b =>
+                {
+                    b.Navigation("MarkId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.Order", b =>
+                {
+                    b.Navigation("CarsId");
+                });
+
+            modelBuilder.Entity("TaxiService.Core.User", b =>
+                {
+                    b.Navigation("CarInfos");
                 });
 #pragma warning restore 612, 618
         }

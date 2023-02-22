@@ -10,6 +10,14 @@ namespace TaxiService.Core
         {
         }
 
+        public DbSet<BodyType> BodyTypes { get; set; }
+        public DbSet<CarClass> CarClasses { get; set; }
+        public DbSet<CarInfo> CarInfo { get; set; }
+        public DbSet<CarColor> CarColors { get; set; }
+        public DbSet<ClientResponse> ClientResponse { get; set; }
+        public DbSet<Mark> Marks { get; set; }
+        public DbSet<Order> Order { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Seed();
