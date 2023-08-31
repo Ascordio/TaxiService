@@ -15,4 +15,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6" />
   </ItemGroup>
 
+<<<<<<< Updated upstream
+=======
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiService.Core\TaxiService.Core.csproj" />
+    <ProjectReference Include="..\TaxiService.Repos\TaxiService.Repos.csproj" />
+  </ItemGroup>
+
+>>>>>>> Stashed changes
 </Project>

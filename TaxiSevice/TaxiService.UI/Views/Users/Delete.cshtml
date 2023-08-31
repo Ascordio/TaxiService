@@ -1,0 +1,17 @@
+﻿@using TaxiService.Repos.Dto.UserDto
+
+@model UserReadDto
+
+<h1>Delete the user?</h1>
+<hr />
+
+<p>@Model.FirstName @Model.LastName</p>
+<p>@Model.Email</p>
+
+<hr />
+<form asp-action="ConfirmDelete" class="col-md-4">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Delete user!!!</button>
+    <a href="/users/index" class="btn btn-outline-dark">Back / Cancel</a>
+</form>
